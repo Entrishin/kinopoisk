@@ -1,0 +1,9 @@
+com\example\Domain\Person.class
+com\example\Domain\Film.class
+com\example\Application.class
+com\example\ServletInitializer.class
+com\example\Controller\MainController.class
+com\example\Domain\Rating.class
+com\example\Domain\User.class
+com\example\Repos\UserRepo.class
+com\example\Service\UserService.class
