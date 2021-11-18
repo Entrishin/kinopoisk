@@ -13,7 +13,7 @@ public class PersonService {
     private PersonRepo personRepo;
 
     public String addPerson(String fullName,String dateOfBirth, String placeOfBirth) {
-        Person person = new Person();
+        Person person = new Person(fullName,dateOfBirth,placeOfBirth);
         personRepo.save(person);
         return "OK";
     }

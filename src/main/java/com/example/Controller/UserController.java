@@ -5,6 +5,7 @@ import com.example.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+
 @RestController
 public class UserController {
     @Autowired
@@ -18,7 +19,6 @@ public class UserController {
     public User login(@RequestParam String login, @RequestParam String password) {
         return userService.login(login,password);
     }
-
 
 
 }
