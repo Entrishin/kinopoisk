@@ -1,0 +1,237 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200;0,300;1,200&display=swap');
+
+@import url("reset.css");
+@import url("auth.css");
+
+$blue: #2c3258;
+$yellow: #e4b61a;
+$lightY: #fee970;
+$lightB:#dbd7d4;
+$grey: #9b9183;
+
+@mixin transTime{
+    transition-duration: 0.5s;
+}
+
+html {
+    height: 100%;
+    font-family: Mulish;
+    font-weight: 200;
+}
+
+body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+h1 {
+    font-family: Comfortaa;
+    font-weight: 600;
+    font-size: 3em;
+}
+
+h3 {
+    font-family: Mulish;
+    font-size: 2em;
+    color:  #f6f5f0;
+}
+h4 {
+    font-family: Mulish;
+    font-size: 1.3em;
+    font-weight: 600;
+    margin-bottom: 3px;
+}
+
+$auth_height: 42px;
+
+.auth h3 {
+    line-height: $auth_height;
+    a {
+        font-weight: 200;
+        line-height: inherit;
+        @include transTime;
+        &:hover{
+        }
+    }
+}
+
+.auth_box{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .auth{
+        text-align: center;
+        width: 280px;
+        height: $auth_height;
+        border-radius: 15px;
+        @include transTime;
+        &:hover{
+            background-color: $lightY;
+        }
+    }
+}
+
+.search{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    form input{
+        width: 280px;
+        height: 36px;
+        text-align: center;
+    }
+    .icon_place{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $lightY;
+        width: 30px;
+        height: 36px;
+        text-align: center;
+        color: $grey;
+        border-top: 2px solid; border-right: 2px solid; border-bottom: 2px solid;
+        @include transTime;
+        &:hover{
+            background-color: $blue;
+        }
+    }
+    .icon {
+        display: inline-block;
+        width: 1.5em;
+        height: 1.5em;
+        stroke-width: 0;
+        stroke: $blue;
+        fill: $blue;
+        &:hover{
+            stroke: $lightY;
+            fill: $lightY;
+        }
+        &:active{
+            stroke: $yellow;
+            fill: $yellow;
+        }
+      }
+}
+
+
+.wrap{
+    width: 100%;
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+header{
+    height: 150px;
+    background-color: $lightB;
+    display: grid;
+    grid-template-columns: 5fr 3fr;
+    a.title {
+        text-align: center;
+        line-height: 159px;
+    }
+}
+
+.title_box {
+    grid-row-start: 1;
+    grid-row-end: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+$top_menu_h: 36px;
+$top_menu_tm: -18px;
+.top_menu{
+    border-radius: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 700px;
+    margin-top: $top_menu_tm;
+    margin-bottom: 42px;
+    background-color: $grey;
+    height: $top_menu_h;
+    z-index: 10;
+    ul{
+        border-radius: 20px;
+        height: inherit;
+        display: flex;
+        justify-content: space-evenly;
+    }
+    li{
+        @include transTime;
+        padding-left: 8px;
+        padding-right: 8px;
+        display: inline;
+        border-radius: 10px;
+        a{
+            font-weight: 400;
+            font-size: 1.6em;
+            color: $lightB;
+            @include transTime;
+            &:hover{
+                color: $blue;
+            }    
+        }
+        &:hover{
+            color: $blue;
+            background-color: $lightY;
+        }
+    }
+}
+
+.container{
+    width: 100%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: $blue;
+    padding-bottom: 36px;
+}
+
+.cont{
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 20px;
+    h3 {
+        font-style: italic;
+        font-weight: 300;
+    }
+}
+
+footer {
+    flex-shrink: 0;
+    height: 200px;
+    background-color: $blue;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+p.copyright{
+    color: bisque;
+    font-size: 2em;
+    font-weight: 200;
+}
+
+.footer-line{
+    height: 2px;
+    width: 80%;
+    border: 2px solid $lightY;
+    border-radius: 4px;
+}
+
+
+
+
+
+
+
