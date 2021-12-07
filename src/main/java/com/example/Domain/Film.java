@@ -20,9 +20,19 @@ public class Film {
     private Set<Long> actors;
     private int ageLimit;
     private double rating;
+    private String imgUrl;
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+    }
 
     public Film(){}
-    public Film(String title, String jenre, String description, int releaseYear, String country, Long producerId, Set<Long> actors, int ageLimit) {
+
+    public Film(String title, String jenre, String description, int releaseYear, String country, Long producerId, Set<Long> actors, int ageLimit, String imgUrl) {
         this.title = title;
         this.jenre = jenre;
         this.description = description;
@@ -31,6 +41,7 @@ public class Film {
         this.producerId = producerId;
         this.actors = actors;
         this.ageLimit = ageLimit;
+        this.imgUrl = imgUrl;
     }
 
     public Long getId() {

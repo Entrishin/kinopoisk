@@ -32,9 +32,9 @@ public class FilmService {
         return result;
     }
 
-    public String addFilm(String title, String jenre, String description, int releaseYear, String country, Long producerId, Set<Long> actorsId, int ageLimit) {
-        Film film = new Film(title,jenre,description,releaseYear,country,producerId,actorsId,ageLimit);
+    public Long addFilm(String title, String jenre, String description, int releaseYear, String country, Long producerId, Set<Long> actorsId, int ageLimit, String imgUrl) {
+        Film film = new Film(title,jenre,description,releaseYear,country,producerId,actorsId,ageLimit,imgUrl);
         filmRepo.save(film);
-        return "OK";
+        return film.getId();
     }
 }

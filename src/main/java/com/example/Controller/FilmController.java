@@ -2,19 +2,21 @@ package com.example.Controller;
 
 import com.example.Domain.Film;
 import com.example.Service.FilmService;
+import com.example.Service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 
 @Controller
 public class FilmController {
     @Autowired
     private FilmService filmService;
+    @Autowired
+    private PersonService personService;
 
     @GetMapping("/")
     private String getAllFilms(Model model){
@@ -22,11 +24,6 @@ public class FilmController {
         model.addAttribute("films",allFilms);
         return "index";
     }
-
-    /*@GetMapping("getAllFilms")
-    private List<Film> getAllFilms() {
-        return filmService.getAllFilms();
-    }*/
 
     @GetMapping("filmItem")
     private String getOneFilm(@RequestParam int id,Model model){
@@ -55,14 +52,19 @@ public class FilmController {
                            @RequestParam String country,
                            @RequestParam Long producerId,
                            @RequestParam Set<Long> actorsId,
-                           @RequestParam int ageLimit) {
-        return filmService.addFilm(title, jenre, description, releaseYear, country, producerId, actorsId, ageLimit);
+                           @RequestParam int ageLimit,
+                           @RequestParam String imgUrl) {
+        Long filmId = filmService.addFilm(title, jenre, description, releaseYear, country, producerId, actorsId, ageLimit, imgUrl);
+
+
+        //после добавления фильма надо ОБНОВИТЬ информацию в таблице Person и добавить в поле ProducerFilms или ActorFilms если человек был продюсером или актером этого фильма
+        personService.updateProducerFilms(filmId,producerId);
+
+        for (Long actorId : actorsId) {
+            personService.updateActorFilms(filmId,actorId);
+        }
+
+        return ""; //view после добавления фильма в БД
     }
-
-    /*@PostMapping("addFilm2")
-    private Object addFilm2(@RequestBody Object test) {
-        return test;
-    }*/
-
 
 }
