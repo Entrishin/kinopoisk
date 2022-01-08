@@ -21,6 +21,13 @@ h1 {
   font-size: 3em;
 }
 
+h2 {
+  font-family: Mulish;
+  font-size: 2.2em;
+  font-weight: 300;
+  color: bisque;
+}
+
 h3 {
   font-family: Mulish;
   font-size: 2em;

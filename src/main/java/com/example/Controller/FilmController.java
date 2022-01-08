@@ -26,6 +26,11 @@ public class FilmController {
         return "index";
     }
 
+    @GetMapping("/mainadd")
+    private String showMenuAdd(){
+        return "mainadd";
+    }
+
     @GetMapping("filmItem")
     private String getOneFilm(@RequestParam int id,Model model){
         Film findFilm = filmService.getOneFilm(id).get();
@@ -45,6 +50,11 @@ public class FilmController {
         Film findFilm = filmService.getFilmByTitle(film2.getTitle()).get();
         model.addAttribute("film", findFilm);
         return "item";
+    }
+
+    @GetMapping("/addfilm")
+    private String addFilm(){
+        return "addfilm";
     }
 
     @PostMapping("addFilm")

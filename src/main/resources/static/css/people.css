@@ -17,12 +17,23 @@
   column-gap: inherit;
   justify-items: inherit;
   align-items: inherit;
-  height: 50px;
+  min-height: 50px;
+  height: max-content;
   border: 1px solid bisque;
   border-radius: 15px;
 }
 .people-list h4 {
   color: bisque;
+}
+.people-list .person-info-films-block {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+}
+.people-list a.person-info-films {
+  font-size: 1.3em;
+  font-weight: 600;
+  color: bisque;
+  line-height: 1.6;
 }
 
 /*# sourceMappingURL=people.css.map */

@@ -4,13 +4,8 @@
         <title>Кинопоиск</title>
         <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
         <link rel="stylesheet" type="text/css" th:href="@{/css/people.css}">
-        <script
-        src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-        crossorigin="anonymous"></script>
 
         <link rel="stylesheet" href="https://i.icomoon.io/public/temp/4cb6920ffd/UntitledProject/style-svg.css">
-        <script defer src="https://i.icomoon.io/public/temp/4cb6920ffd/UntitledProject/svgxuse.js"></script>
     </head>
     <body>
         <div class="wrap">
@@ -28,7 +23,11 @@
                             <h4 th:text="${person.fullName}"></h4>
                             <h4 th:text="${person.dateOfBirth}"></h4>
                             <h4 th:text="${person.placeOfBirth}">Страна рождения</h4>
-                            <h4>Фильмы</h4>
+                            <div class="person-info-films-block">
+                                <div th:each="film : ${person.directedFilms}">
+                                    <a class="person-info-films" th:href="@{'/filmItem?id=' + ${film.id}}" th:text="${film.title}"></a>
+                                </div>
+                            </div>
                         </div>
                         <!--<div class="pearson-info">
                             <h4>Имя</h4>
@@ -56,5 +55,6 @@
             <div class="footer-line"></div>
             <p class="copyright">Автор: свеня </p>
         </footer>
+        <div th:replace="scripts :: scripts"></div>
     </body>
 <html>

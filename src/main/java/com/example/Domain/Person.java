@@ -1,6 +1,7 @@
 package com.example.Domain;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -17,6 +18,10 @@ public class Person {
     private Set<Long> producerFilms;
     @ElementCollection(targetClass = Long.class, fetch = FetchType.EAGER)
     private Set<Long> actorFilms;
+
+    @Transient
+    private List<Film> directedFilms;
+
 
     public Person() {}
     public Person(String fullName, String dateOfBirth, String placeOfBirth) {
@@ -56,7 +61,6 @@ public class Person {
     public void setPlaceOfBirth(String placeOfBirth) {
         this.placeOfBirth = placeOfBirth;
     }
-
     public Set<Long> getProducerFilms() {
         return producerFilms;
     }
@@ -71,5 +75,13 @@ public class Person {
 
     public void setActorFilms(Set<Long> actorFilms) {
         this.actorFilms = actorFilms;
+    }
+
+    public void setDirectedFilms(List<Film> DirectedFilms) {
+        directedFilms = DirectedFilms;
+    }
+
+    public List<Film> getDirectedFilms() {
+        return directedFilms;
     }
 }
