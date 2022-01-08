@@ -5,35 +5,15 @@
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/css/index.css}">
-    <script
-            src="https://code.jquery.com/jquery-3.6.0.min.js"
-            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-            crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="https://i.icomoon.io/public/temp/4cb6920ffd/UntitledProject/style-svg.css">
-    <script defer src="https://i.icomoon.io/public/temp/4cb6920ffd/UntitledProject/svgxuse.js"></script>
+
 </head>
 <body>
-<div class="wrap">
-    <header>
-        <div class="title_box">
-            <a class="title" th:href="${'/'}"><h1>Best Кинопоиск ever</h1></a>
-        </div>
-
-        <div class="auth_box">
-            <div class="auth">
-                <h3><a href="../static/auth/index.html">Авторизоваться</a></h3> <!--!!!!!!!-->
-            </div>
-        </div>
-    </header>
+    <div class="wrap">
+    <div th:replace="header :: header"></div>
     <div class="container">
-        <nav class="top_menu">
-            <ul>
-                <li><a href="index.html">Главная</a></li>
-                <li><a href="people.html">Кучка долбоёбов</a></li>
-                <li><a href="#">Добавить фильм</a></li>
-            </ul>
-        </nav>
+        <div th:replace="top_menu :: top_menu"></div>
         <div class="cont">
             <h3>Поиск</h3>
             <div class="search">
@@ -52,10 +32,10 @@
         </div>
     </div>
 </div>
-<footer>
+    <footer>
     <div class="footer-line"></div>
     <p class="copyright">Автор: свеня </p>
 </footer>
-<script defer src="../static/js/script_anim.js"></script>
+    <div th:replace="scripts :: scripts"></div>
 </body>
 <html>

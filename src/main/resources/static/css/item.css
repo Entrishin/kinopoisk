@@ -9,7 +9,6 @@
   height: 30rem;
   border-radius: 30px;
 }
-
 .image_block img {
   border-radius: inherit;
   width: 100%;
@@ -22,7 +21,6 @@
 .info_block {
   padding-left: 50px;
 }
-
 .info_block h4 {
   color: bisque;
   margin-bottom: 40px;
@@ -30,10 +28,12 @@
   font-weight: 400;
   text-align: justify;
 }
-
 .info_block h4 span {
   font-weight: 200;
   font-size: 1.5rem;
+}
+.info_block h5 {
+  color: bisque;
 }
 
 h3.item_title {
@@ -41,3 +41,5 @@ h3.item_title {
   margin-bottom: 40px;
   font-weight: 600;
 }
+
+/*# sourceMappingURL=item.css.map */

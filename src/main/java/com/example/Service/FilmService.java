@@ -1,6 +1,7 @@
 package com.example.Service;
 
 import com.example.Domain.Film;
+import com.example.Domain.Person;
 import com.example.Repos.FilmRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class FilmService {
@@ -22,6 +24,12 @@ public class FilmService {
         List <Film> all = getAllFilms();
         Optional<Film> result = all.stream().filter(film ->( film.getId().equals(film_id))).findFirst();
 
+        return result;
+    }
+
+    public List<Film> getFilmsByDirector(long directorId){
+        List <Film> all = getAllFilms();
+        List <Film> result = all.stream().filter(film ->( film.getProducerId().equals(directorId))).collect(Collectors.toList());
         return result;
     }
 
