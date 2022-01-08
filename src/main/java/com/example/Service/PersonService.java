@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -21,6 +22,13 @@ public class PersonService {
     }
     public List<Person> getAllPersons() {
         return personRepo.findAll();
+    }
+
+    public Optional<Person> getOnePerson(long person_id) {
+        List<Person> all = getAllPersons();
+        Optional<Person> result = all.stream().filter(person -> (person.getId().equals(person_id))).findFirst();
+
+        return result;
     }
 
     public void updateProducerFilms(Long filmId, Long personId) {

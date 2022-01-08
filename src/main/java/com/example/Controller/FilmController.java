@@ -1,6 +1,7 @@
 package com.example.Controller;
 
 import com.example.Domain.Film;
+import com.example.Domain.Person;
 import com.example.Service.FilmService;
 import com.example.Service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,8 @@ public class FilmController {
     private String getOneFilm(@RequestParam int id,Model model){
         Film findFilm = filmService.getOneFilm(id).get();
         model.addAttribute("film", findFilm);
+        Person findPerson = personService.getOnePerson(findFilm.getProducerId()).get();
+        model.addAttribute("director", findPerson);
         return "item";
     }
 

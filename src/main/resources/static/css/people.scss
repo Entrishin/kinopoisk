@@ -1,0 +1,26 @@
+.people-list{
+  width: 100%;
+  display: grid;
+  grid-template-columns: 3fr 3fr 3fr 4fr;
+  align-items: center;
+  justify-items: center;
+  column-gap: 10px;
+  row-gap: 20px;
+  .person-info{
+    grid-column-start: 1;
+    grid-column-end: 5;
+    display: grid;
+    grid-template-columns: inherit;
+    width: inherit;
+    row-gap: inherit;
+    column-gap: inherit;
+    justify-items: inherit;
+    align-items: inherit;
+    height: 50px;
+    border: 1px solid bisque;
+    border-radius: 15px;
+  }
+  h4{
+    color: bisque;
+  }
+}

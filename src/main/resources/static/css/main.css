@@ -37,13 +37,11 @@ h4 {
 .auth h3 {
   line-height: 42px;
 }
-
 .auth h3 a {
   font-weight: 200;
   line-height: inherit;
   transition-duration: 0.5s;
 }
-
 .auth_box {
   width: 100%;
   height: 100%;
@@ -51,7 +49,6 @@ h4 {
   justify-content: center;
   align-items: center;
 }
-
 .auth_box .auth {
   text-align: center;
   width: 280px;
@@ -59,7 +56,6 @@ h4 {
   border-radius: 15px;
   transition-duration: 0.5s;
 }
-
 .auth_box .auth:hover {
   background-color: #fee970;
 }
@@ -70,13 +66,11 @@ h4 {
   display: flex;
   justify-content: center;
 }
-
 .search form input {
   width: 280px;
   height: 36px;
   text-align: center;
 }
-
 .search .icon_place {
   display: flex;
   justify-content: center;
@@ -91,11 +85,9 @@ h4 {
   border-bottom: 2px solid;
   transition-duration: 0.5s;
 }
-
 .search .icon_place:hover {
   background-color: #2c3258;
 }
-
 .search .icon {
   display: inline-block;
   width: 1.5em;
@@ -104,12 +96,10 @@ h4 {
   stroke: #2c3258;
   fill: #2c3258;
 }
-
 .search .icon:hover {
   stroke: #fee970;
   fill: #fee970;
 }
-
 .search .icon:active {
   stroke: #e4b61a;
   fill: #e4b61a;
@@ -128,7 +118,6 @@ header {
   display: grid;
   grid-template-columns: 5fr 3fr;
 }
-
 header a.title {
   text-align: center;
   line-height: 159px;
@@ -136,7 +125,7 @@ header a.title {
 
 .title_box {
   grid-row-start: 1;
-  grid-row-end: 3;
+  grid-row-end: 2;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -153,14 +142,12 @@ header a.title {
   height: 36px;
   z-index: 10;
 }
-
 .top_menu ul {
   border-radius: 20px;
   height: inherit;
   display: flex;
   justify-content: space-evenly;
 }
-
 .top_menu li {
   transition-duration: 0.5s;
   padding-left: 8px;
@@ -168,18 +155,15 @@ header a.title {
   display: inline;
   border-radius: 10px;
 }
-
 .top_menu li a {
   font-weight: 400;
   font-size: 1.6em;
   color: #dbd7d4;
   transition-duration: 0.5s;
 }
-
 .top_menu li a:hover {
   color: #2c3258;
 }
-
 .top_menu li:hover {
   color: #2c3258;
   background-color: #fee970;
@@ -199,7 +183,6 @@ header a.title {
   margin: 0 auto;
   margin-top: 20px;
 }
-
 .cont h3 {
   font-style: italic;
   font-weight: 300;
@@ -227,3 +210,5 @@ p.copyright {
   border: 2px solid #fee970;
   border-radius: 4px;
 }
+
+/*# sourceMappingURL=main.css.map */

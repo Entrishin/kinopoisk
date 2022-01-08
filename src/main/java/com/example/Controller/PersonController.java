@@ -24,11 +24,11 @@ public class PersonController {
         personService.addPerson(fullName,dateOfBirth,placeOfBirth);
         return ""; // view после добавления person
     }
-    @GetMapping("/getAllPersons")
+    @GetMapping("/persons")
     public String getAllPersons(Model model) {
         List<Person> allPersons = personService.getAllPersons();
-        model.addAttribute("persons",allPersons);
-        return ""; //view с отображением все persons
+        model.addAttribute("persons", allPersons);
+        return "people"; //view с отображением все persons
     }
 
 
