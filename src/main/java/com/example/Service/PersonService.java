@@ -15,11 +15,18 @@ public class PersonService {
     @Autowired
     private PersonRepo personRepo;
 
-    public String addPerson(String fullName,String dateOfBirth, String placeOfBirth) {
+    public Long addPerson(String fullName,String dateOfBirth, String placeOfBirth) {
         Person person = new Person(fullName,dateOfBirth,placeOfBirth);
         personRepo.save(person);
-        return "OK";
+        return person.getId();
     }
+
+    public Long addPerson(Person person) {
+        personRepo.save(person);
+        return person.getId();
+    }
+
+
     public List<Person> getAllPersons() {
         return personRepo.findAll();
     }
@@ -31,29 +38,4 @@ public class PersonService {
         return result;
     }
 
-    public void updateProducerFilms(Long filmId, Long personId) {
-        Person person = personRepo.findById(personId).get();
-        Set<Long> producerFilmsFromDb = person.getProducerFilms();
-        //если в поле producerFilms пусто, создаем новый сет, если НЕ пусто, то добавляем в уже имеющийся
-        Set<Long> producerFilmsFromView;
-        if (producerFilmsFromDb.isEmpty())
-            producerFilmsFromView = new HashSet<>();
-        else
-            producerFilmsFromView = person.getProducerFilms();
-        producerFilmsFromView.add(filmId);
-        personRepo.updateProducerFilms(producerFilmsFromView, personId);
-    }
-
-    public void updateActorFilms(Long filmId,  Long personId) {
-        Person person = personRepo.findById(personId).get();
-        Set<Long> actorFilmsFromDb = person.getActorFilms();
-        //если в поле producerFilms пусто, создаем новый сет, если НЕ пусто, то добавляем в уже имеющийся
-        Set<Long> actorFilmsFromView;
-        if (actorFilmsFromDb.isEmpty())
-            actorFilmsFromView = new HashSet<>();
-        else
-            actorFilmsFromView = person.getActorFilms();
-        actorFilmsFromView.add(filmId);
-        personRepo.updateActorFilms(actorFilmsFromView, personId);
-    }
 }

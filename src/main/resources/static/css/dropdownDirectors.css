@@ -1,0 +1,78 @@
+.select-hidden {
+  display: none;
+  visibility: hidden;
+  padding-right: 10px;
+}
+
+.select {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  font-family: Mulish;
+  font-size: 1.3em;
+  font-weight: 300;
+  color: #2c3258;
+  text-align: center;
+  width: 415px;
+  height: 40px;
+}
+
+.select-styled {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #e4b61a;
+  line-height: 100%;
+  padding: 8px 15px;
+  transition-duration: 0.5s;
+}
+.select-styled:after {
+  content: "";
+  width: 0;
+  height: 0;
+  border: 7px solid transparent;
+  border-color: #2c3258 transparent transparent transparent;
+  position: absolute;
+  top: 16px;
+  right: 10px;
+}
+.select-styled:hover {
+  background-color: #d6d2ce;
+}
+.select-styled:active, .select-styled.active {
+  background-color: #cfcac6;
+}
+.select-styled:active:after, .select-styled.active:after {
+  top: 9px;
+  border-color: transparent transparent #2c3258 transparent;
+}
+
+.select-options {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  left: 0;
+  z-index: 999;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background-color: #cda417;
+}
+.select-options li {
+  margin: 0;
+  padding: 12px 0;
+  text-indent: 15px;
+  border-top: 1px solid #b69115;
+  transition-duration: 0.5s;
+}
+.select-options li:hover, .select-options li.is-selected {
+  background: #dbd7d4;
+}
+.select-options li[rel=hide] {
+  display: none;
+}
+
+/*# sourceMappingURL=dropdownDirectors.css.map */
