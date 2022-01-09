@@ -7,10 +7,7 @@ import com.example.Service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,16 +22,17 @@ public class PersonController {
     private FilmService FilmService;
 
     @GetMapping("/addPerson")
-    private String addFilm(){
+    private String personForm(Model model){
+        model.addAttribute("person", new Person());
         return "addperson";
     }
     @PostMapping("/addPerson")
-    public String addPerson(@RequestParam String fullName,
-                          @RequestParam String dateOfBirth,
-                          @RequestParam String placeOfBirth) {
-        personService.addPerson(fullName,dateOfBirth,placeOfBirth);
-        return ""; // view после добавления person
+    public String addPerson(@ModelAttribute Person person, Model model) {
+        model.addAttribute("person", person);
+        personService.addPerson(person.getFullName(),person.getDateOfBirth(),person.getPlaceOfBirth());
+        return "redirect:/persons"; // view после добавления person
     }
+
     @GetMapping("/persons")
     public String getAllPersons(Model model) {
         List<Person> allPersons = personService.getAllPersons();

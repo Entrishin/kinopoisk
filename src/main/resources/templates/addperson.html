@@ -14,10 +14,14 @@
         <div th:replace="top_menu :: top_menu"></div>
         <div class="cont">
             <h3>Введите даннные для добавления режисёра</h3>
-            <form action="" method="post" class="addform">
+            <form th:action="@{/addPerson}" th:object="${person}" method="post" class="addform">
                 <fieldset>
                     <p>Имя</p>
-                    <input type="text" name="name" class="input-text">
+                    <input type="text" th:field="*{fullName}" class="input-text">
+                    <p>Дата рождения</p>
+                    <input type="text" th:field="*{dateOfBirth}" class="input-text">
+                    <p>Место рождения</p>
+                    <input type="text" th:field="*{placeOfBirth}" class="input-text">
                 </fieldset>
                 <input type="submit" value="Добавить" class="submitbtn">
             </form>

@@ -61,7 +61,7 @@ h6 {
 
 q:before,
 q:after {
-  content: '';
+  content: "";
 }
 
 abbr,
@@ -88,6 +88,11 @@ select {
   *font-size: 100%;
   /*to enable resizing for IE*/
 }
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 0px;
+}
 
 /*because legend doesn't inherit in IE */
 legend {
@@ -98,3 +103,5 @@ a {
   text-decoration: none;
   color: black;
 }
+
+/*# sourceMappingURL=reset.css.map */
