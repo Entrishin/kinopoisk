@@ -29,7 +29,7 @@ public class PersonController {
     @PostMapping("/addPerson")
     public String addPerson(@ModelAttribute Person person, Model model) {
         model.addAttribute("person", person);
-        personService.addPerson(person.getFullName(),person.getDateOfBirth(),person.getPlaceOfBirth());
+        personService.addPerson(person);
         return "redirect:/persons"; // view после добавления person
     }
 

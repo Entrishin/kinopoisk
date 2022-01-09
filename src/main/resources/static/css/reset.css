@@ -85,6 +85,7 @@ select {
   font-family: inherit;
   font-size: inherit;
   font-weight: inherit;
+  border: 0px;
   *font-size: 100%;
   /*to enable resizing for IE*/
 }
@@ -92,6 +93,7 @@ input:focus-visible,
 textarea:focus-visible,
 select:focus-visible {
   outline: 0px;
+  border: 0px;
 }
 
 /*because legend doesn't inherit in IE */

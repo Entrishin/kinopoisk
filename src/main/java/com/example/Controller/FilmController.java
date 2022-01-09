@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.Set;
@@ -53,31 +54,19 @@ public class FilmController {
     }
 
     @GetMapping("/addfilm")
-    private String addFilm(){
+    private String addFilm(Model model){
+        List<Person> allPersons = personService.getAllPersons();
+        model.addAttribute("persons", allPersons);
+        model.addAttribute("film", new Film());
         return "addfilm";
     }
 
     @PostMapping("addFilm")
-    private String addFilm(@RequestParam String title,
-                           @RequestParam String jenre,
-                           @RequestParam String description,
-                           @RequestParam int releaseYear,
-                           @RequestParam String country,
-                           @RequestParam Long producerId,
-                           @RequestParam Set<Long> actorsId,
-                           @RequestParam int ageLimit,
-                           @RequestParam String imgUrl) {
-        Long filmId = filmService.addFilm(title, jenre, description, releaseYear, country, producerId, actorsId, ageLimit, imgUrl);
-
-
-        //после добавления фильма надо ОБНОВИТЬ информацию в таблице Person и добавить в поле ProducerFilms или ActorFilms если человек был продюсером или актером этого фильма
-        personService.updateProducerFilms(filmId,producerId);
-
-        for (Long actorId : actorsId) {
-            personService.updateActorFilms(filmId,actorId);
-        }
-
-        return ""; //view после добавления фильма в БД
+    private String addFilm(@ModelAttribute Film film, @RequestParam("file") MultipartFile file, Model model) {
+        /*FileController FC = new FileController();
+        film.setImgUrl(FC.uploadFile(file,"filmIMG_" + film.getTitle()));*/
+        Long filmId = filmService.addFilm(film);
+        return "redirect:/"; //view после добавления фильма в БД
     }
 
 }

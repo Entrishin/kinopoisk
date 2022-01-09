@@ -14,10 +14,6 @@ public class Person {
 
     private String dateOfBirth;
     private String placeOfBirth;
-    @ElementCollection(targetClass = Long.class, fetch = FetchType.EAGER)
-    private Set<Long> producerFilms;
-    @ElementCollection(targetClass = Long.class, fetch = FetchType.EAGER)
-    private Set<Long> actorFilms;
 
     @Transient
     private List<Film> directedFilms;
@@ -60,21 +56,6 @@ public class Person {
 
     public void setPlaceOfBirth(String placeOfBirth) {
         this.placeOfBirth = placeOfBirth;
-    }
-    public Set<Long> getProducerFilms() {
-        return producerFilms;
-    }
-
-    public void setProducerFilms(Set<Long> producerFilms) {
-        this.producerFilms = producerFilms;
-    }
-
-    public Set<Long> getActorFilms() {
-        return actorFilms;
-    }
-
-    public void setActorFilms(Set<Long> actorFilms) {
-        this.actorFilms = actorFilms;
     }
 
     public void setDirectedFilms(List<Film> DirectedFilms) {

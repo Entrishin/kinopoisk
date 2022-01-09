@@ -45,4 +45,8 @@ public class FilmService {
         filmRepo.save(film);
         return film.getId();
     }
+    public Long addFilm(Film film) {
+        filmRepo.save(film);
+        return film.getId();
+    }
 }
