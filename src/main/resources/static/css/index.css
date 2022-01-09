@@ -6,7 +6,6 @@
   padding-left: 15px;
   justify-content: space-between;
 }
-
 .popular_films .item-wrap {
   position: relative;
   width: 230px;
@@ -15,7 +14,6 @@
   justify-content: center;
   margin-bottom: 25px;
 }
-
 .popular_films .item-back-1 {
   width: inherit;
   height: inherit;
@@ -25,7 +23,6 @@
   transition-duration: 0.5s;
   z-index: 0;
 }
-
 .popular_films .item-back-2 {
   position: absolute;
   width: inherit;
@@ -35,7 +32,6 @@
   transition-duration: 0.5s;
   z-index: 0;
 }
-
 .popular_films .item {
   position: absolute;
   width: 200px;
@@ -73,7 +69,6 @@
   border-top-left-radius: inherit;
   border-top-right-radius: inherit;
 }
-
 .img img {
   border-top-left-radius: inherit;
   border-top-right-radius: inherit;
@@ -83,3 +78,5 @@
   object-position: center;
   overflow: hidden;
 }
+
+/*# sourceMappingURL=index.css.map */
