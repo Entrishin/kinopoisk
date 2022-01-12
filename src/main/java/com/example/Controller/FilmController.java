@@ -63,8 +63,8 @@ public class FilmController {
 
     @PostMapping("addFilm")
     private String addFilm(@ModelAttribute Film film, @RequestParam("file") MultipartFile file, Model model) {
-        /*FileController FC = new FileController();
-        film.setImgUrl(FC.uploadFile(file,"filmIMG_" + film.getTitle()));*/
+        FileController FC = new FileController();
+        film.setImgUrl(FC.uploadFile(file,"filmIMG_" + film.getTitle()));
         Long filmId = filmService.addFilm(film);
         return "redirect:/"; //view после добавления фильма в БД
     }
