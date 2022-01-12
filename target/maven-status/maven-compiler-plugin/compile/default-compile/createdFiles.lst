@@ -7,6 +7,7 @@ com\example\Repos\FilmRepo.class
 com\example\Repos\PersonRepo.class
 com\example\Domain\Person.class
 com\example\Controller\RatingController.class
+com\example\Controller\FileController.class
 com\example\Controller\PersonController.class
 com\example\Controller\UserController.class
 com\example\Domain\Rating.class

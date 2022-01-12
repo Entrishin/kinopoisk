@@ -7,7 +7,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -18,7 +20,7 @@ public class FileController {
     @Autowired
     private HttpServletRequest request;
 
-    private final String UPLOAD_DIR = "C:/Users/Laptop-V-Vatnik/IdeaProjects/kinopoisk/src/main/resources/static/img/";
+    private final String UPLOAD_DIR = "UploadedImages/";
 
 
     public String uploadFile(MultipartFile file,String generatedFileName) {
@@ -34,9 +36,14 @@ public class FileController {
         // save the file on the local file system
         try {
             //Path path = Paths.get(UPLOAD_DIR + fileName);
-            Path path = Paths.get(request.getServletContext().getRealPath("/img/") + fileName);
+            //Path path = Paths.get(request.getServletContext().getRealPath("/img/") + fileName);
+            //Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
 
-            Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
+            File fl = new File(UPLOAD_DIR + fileName);
+            try (OutputStream os = new FileOutputStream(fl)) {
+                os.write(file.getBytes());
+            }
+
         } catch (IOException e) {
             e.printStackTrace();
         }
