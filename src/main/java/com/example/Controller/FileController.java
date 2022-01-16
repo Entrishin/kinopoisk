@@ -30,6 +30,12 @@ public class FileController {
             return "";
         }
 
+        File directory = new File("UploadedImages");
+        if (! directory.exists()){
+            directory.mkdir();
+            //creating directory if not exists
+        }
+
         // normalize the file path
         String fileName = generatedFileName + "." + StringUtils.getFilenameExtension(file.getOriginalFilename());
 

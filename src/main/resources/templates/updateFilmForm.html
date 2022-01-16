@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Кинопоиск</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/mainadd.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/dropdownDirectors.css}">
+
+    <link rel="stylesheet" href="https://i.icomoon.io/public/temp/4cb6920ffd/UntitledProject/style-svg.css">
+</head>
+<body>
+<div class="wrap">
+    <div th:replace="header :: header"></div>
+    <div class="container">
+        <div th:replace="top_menu :: top_menu"></div>
+        <div class="cont">
+            <h3>Введите даннные для добавления фильма</h3>
+            <form th:action="@{/updateFilm}" th:object="${film}" method="post" class="addform" enctype="multipart/form-data">
+                <fieldset>
+                    <p>Название фильма</p>
+                    <input type="text" th:field="*{title}" required name="title" class="input-text">
+                </fieldset>
+                <fieldset>
+                    <p>Имя режисёра</p>
+                    <select required id="director" th:field="*{producerId}" >
+                        <option value="hide">-- Выберите режисёра --</option>
+                        <option th:value="${person.id}" th:each="person : ${persons}">
+                            <p th:text="${person.fullName}"></p>
+                        </option>
+                    </select>
+                </fieldset>
+                <fieldset>
+                    <p>Жанр</p>
+                    <input type="text" th:field="*{jenre}" name="jenre" class="input-text">
+                </fieldset>
+                <fieldset>
+                    <p>Год выпуска</p>
+                    <input required type="number" th:field="*{releaseYear}" name="year" class="input-text" placeholder="1998" default="1998">
+                </fieldset>
+                <fieldset>
+                    <p>Страна</p>
+                    <input type="text" name="country" th:field="*{country}" class="input-text">
+                </fieldset>
+                <fieldset>
+                    <p>Возрастные ограничения</p>
+                    <input required type="number" th:field="*{ageLimit}" name="agelimit" class="input-text">
+                </fieldset>
+                <fieldset style="justify-content: flex-start">
+                    <p>Описание</p>
+                </fieldset>
+                <fieldset style="justify-content: center">
+                    <textarea rows="8" cols="50" th:field="*{description}" name="description" class="textareaMy"></textarea>
+                </fieldset>
+                <fieldset>
+                    <label for="file"><p>Файл для картинки на превью</p></label>
+                    <input type="file" id="file" name="file" class="inputfile">
+                </fieldset>
+                <input type="submit" value="Добавить" class="submitbtn">
+            </form>
+        </div>
+    </div>
+</div>
+<footer>
+    <div class="footer-line"></div>
+    <p class="copyright">Автор: Watnik </p>
+</footer>
+
+<div th:replace="scripts :: scripts"></div>
+</body>
+<html>

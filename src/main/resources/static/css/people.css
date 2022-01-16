@@ -7,7 +7,21 @@
   column-gap: 10px;
   row-gap: 20px;
 }
-.people-list .person-info {
+.people-list h4 {
+  color: bisque;
+}
+.people-list .person-info-films-block {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+}
+.people-list a.person-info-films {
+  font-size: 1.3em;
+  font-weight: 600;
+  color: bisque;
+  line-height: 1.6;
+}
+
+.person-info {
   grid-column-start: 1;
   grid-column-end: 5;
   display: grid;
@@ -21,19 +35,17 @@
   height: max-content;
   border: 1px solid bisque;
   border-radius: 15px;
+  transition-duration: 0.5s;
 }
-.people-list h4 {
-  color: bisque;
+.person-info:hover {
+  box-shadow: 0 0 15px #fee970;
+  background-color: #dbd7d4;
 }
-.people-list .person-info-films-block {
-  padding-top: 0.5em;
-  padding-bottom: 0.5em;
+.person-info:hover h4.people-list {
+  color: #2c3258;
 }
-.people-list a.person-info-films {
-  font-size: 1.3em;
-  font-weight: 600;
-  color: bisque;
-  line-height: 1.6;
+.person-info:hover a.person-info-films-block {
+  color: #2c3258;
 }
 
 /*# sourceMappingURL=people.css.map */

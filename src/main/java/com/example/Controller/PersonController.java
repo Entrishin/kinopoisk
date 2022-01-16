@@ -43,6 +43,34 @@ public class PersonController {
         return "people"; //view с отображением все persons
     }
 
+    @GetMapping("/personItem")
+    public  String getOnePerson(@RequestParam int id,Model model){
+        Person person = personService.getOnePerson(id);
+        person.setDirectedFilms(FilmService.getFilmsByDirector(id));
+        model.addAttribute("person", person);
+        return "directorItem";
+    }
 
+    @GetMapping("/updatePerson")
+    public String updatePersonForm(@RequestParam int id,Model model){
+        Person person = personService.getOnePerson(id);
+        model.addAttribute("person", person);
+        return "updateDirForm";
+    }
+
+    @PostMapping("/updatePerson")
+    public String updatePerson(@ModelAttribute Person person, Model model){
+        //добавить логику
+        model.addAttribute("person", person);
+        personService.updatePerson(person);
+        return "redirect:/personItem?id="+person.getId();  //переделать на personItem?Id=person.id
+    }
+
+    @PostMapping("/deletePerson")
+    public String deletePerson(@ModelAttribute Person person, Model model){
+        model.addAttribute("person", person);
+        personService.deletePerson(person);
+        return "redirect:/persons";
+    }
 
 }

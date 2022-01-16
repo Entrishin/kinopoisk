@@ -15,16 +15,32 @@
         <div class="cont">
             <div class="item_block">
                 <div class="image_block">
-                    <img th:src="${'/UploadedImages/' + film.imgUrl}" alt="noimg">
+                    <img th:src="${'/UploadedImages/' + film.imgUrl}" onerror = "this.onerror=null; this.src='/img/smurfiki.jpg'" alt="noimg">
                 </div>
                 <div class="info_block">
 
                     <h3 class="item_title" th:text="${film.title}"></h3>
                     <h5>Жанр: <span th:text="${film.jenre}"></span></h5>
-                    <h4>Режисёр: <span th:text="${director.getFullName()}"></span></h4>
+                    <!--<h4>Режисёр: <span th:text="${director.getFullName()}"></span></h4>-->
                     <h4>Краткое содержание: <span th:text="${film.description}"></span></h4>
                     <h5>Возрастное ограничение: <span th:text="${film.ageLimit}"></span></h5>
                     <h5>Страна, год выпуска: <span th:text="${film.country + ', ' + film.releaseYear}"></span></h5>
+
+                    <form th:action="@{/deleteFilm}" th:object="${film}" method="post" class="changes_block">
+                        <a class="btn_change" th:href="@{'/updateFilm?id=' + ${film.id}}">
+                            <p>Изменить</p>
+                        </a>
+                        <input type="hidden" name="id" th:field="*{id}" th:value="${film.id}">
+                        <div class="delete_btn">
+                            <input type="button" class="btn_change" value="Удалить" onclick="showConfirmBlock()">
+                            <div class="delete_warn">
+                                <p>Вы точно хотите удалить это?</p>
+                                <input class="delete_warn_btn delete_btn_confirm" type="submit" value="Подтвердить">
+                                <input class="delete_warn_btn" type="button" value="Отменить" onclick="hideConfirmBlock()">
+                            </div>
+                        </div>
+
+                    </form>
                 </div>
             </div>
         </div>
