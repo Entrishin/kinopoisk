@@ -16,7 +16,7 @@
         <div th:replace="top_menu :: top_menu"></div>
         <div class="cont">
             <h3>Введите даннные для добавления фильма</h3>
-            <form th:action="@{/addFilm}" th:object="${film}" method="post" class="addform" enctype="multipart/form-data">
+            <form th:action="@{/updateFilm}" th:object="${film}" method="post" class="addform" enctype="multipart/form-data">
                 <fieldset>
                     <p>Название фильма</p>
                     <input type="text" th:field="*{title}" required name="title" class="input-text">
@@ -24,9 +24,13 @@
                 <fieldset>
                     <p>Имя режисёра</p>
                     <select required id="director" th:field="*{producerId}" >
-                        <option value="hide">-- Выберите режисёра --</option>
-                        <option th:value="${person.id}" th:each="person : ${persons}">
-                            <p th:text="${person.fullName}"></p>
+                        <option th:value="${film.producerId}" th:text="${DirectorsName}"></option>
+                        <option
+                                th:each="person : ${persons}"
+                                th:value="${person.id}"
+                                th:text="${person.fullName}"
+                                th:if="${not person.id.equals(film.producerId)}">
+
                         </option>
                     </select>
                 </fieldset>
@@ -56,6 +60,7 @@
                     <label for="file"><p>Файл для картинки на превью</p></label>
                     <input type="file" id="file" name="file" class="inputfile">
                 </fieldset>
+                <input type="hidden" name="id" th:field="*{id}" th:value="${film.id}">
                 <input type="submit" value="Добавить" class="submitbtn">
             </form>
         </div>

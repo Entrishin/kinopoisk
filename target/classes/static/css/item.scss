@@ -1,3 +1,5 @@
+@import "main.scss";
+
 .item_block{
     display: grid;
     grid-template-columns: 2fr 4fr;
@@ -16,13 +18,14 @@
         overflow: hidden;
     }
 }
-$margin_b: 40px;
+$margin_b: 20px;
+
 .info_block{
     padding-left: 50px;
     h4{
         color: bisque;
         margin-bottom: $margin_b;
-        font-size: 2em;
+        font-size: 1.7em;
         font-weight: 400;
         text-align: justify;
         span{
@@ -39,4 +42,128 @@ h3.item_title{
     color: bisque;
     margin-bottom: $margin_b;
     font-weight: 600;
+}
+
+.changes_block{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 15px;
+    align-content: center;
+    justify-items: baseline;
+    width: 60%;
+    height: 150px;
+    overflow: hidden;
+}
+
+.btn_change{
+    color: #2c3258;
+    background-color: #9b9183;
+    font-size: 1.5em;
+    font-weight: 600;
+    padding: 10px;
+    margin-left: 15px;
+    border-radius: 13px;
+    @include transTime;
+    &:hover{
+        background-color: #cda417;
+        box-shadow: 0 0 15px rgba(155, 145, 131, 0.7);
+    }
+    &:focus{
+        background-color: #b69115;
+    }
+}
+
+.delete_btn{
+    position: relative;
+}
+
+.delete_warn{
+    @include transTime;
+    position: absolute;
+    left: 285px;
+    //left: -70px;
+    top: -50px;
+    background-color: $lightY;
+    height: 150px;
+    width: fit-content;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 15px;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 30px;
+    justify-items: center;
+    align-items: center;
+    p{
+        grid-column-start: 1;
+        grid-column-end: 3;
+        font-size: 1.3em;
+        font-weight: 600;
+        color: #2c3258;
+    }
+    .delete_btn_confirm{
+        background-color:$lightB !important;
+    }
+    .delete_warn_btn{
+        height: 3em;
+        border-radius: 10px;
+        padding: 0.6em;
+        font-size: 1em;
+        font-weight: 600;
+        background-color: $yellow;
+        &:hover{
+            box-shadow: 0 0 5px rgb(17%, 20%, 35%, 0.6);
+        }
+        &:active{
+            background-color: $blue;
+            color: bisque;
+        }
+    }
+}
+
+ul.film-list{
+    padding-left: 40px;
+    margin-bottom: 40px;
+    width: fit-content;
+    li{
+        margin-bottom: 6px;
+        @include transTime;
+        ::before{
+            content: "---";
+            @include transTime;
+        }
+        ::after{
+            @include transTime;
+        }
+        &:hover{
+            ::after{
+                content: "-->>";
+                margin-left: 2em;
+                color: #cda417;
+            }
+            ::before{
+                content: "---";
+                margin-right: 2em;
+                color: #cda417;
+            }
+        }
+        a{
+            color: bisque;
+            font-size: 1.4em;
+            font-style: italic;
+            @include transTime;
+            &:hover{
+                color: #cda417;
+                font-weight: 600;
+            }
+        }
+    }
+}
+
+span.director{
+    @include transTime;
+    &:hover{
+        color: $lightY;
+    }
 }

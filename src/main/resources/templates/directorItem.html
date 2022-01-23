@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Кинопоиск</title>
+    <!--<link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">-->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/item.css}">
+
+    <link rel="stylesheet" href="https://i.icomoon.io/public/temp/4cb6920ffd/UntitledProject/style-svg.css">
+</head>
+<body>
+    <div class="wrap">
+    <div th:replace="header :: header"></div>
+    <div class="container">
+        <div th:replace="top_menu :: top_menu"></div>
+        <div class="cont">
+            <div class="item_block">
+                <div class="image_block">
+                    <img th:src="${'/UploadedImages/' + person.imgUrl}" onerror = "this.onerror=null; this.src='/img/smurfiki.jpg'" alt="noimg">
+                </div>
+                <div class="info_block">
+
+                    <h3 class="item_title" th:text="${person.fullName}">Название</h3>
+                    <h4>Год рождения: <span th:text="${person.dateOfBirth}"></span></h4>
+                    <h4>Страна рождения: <span th:text="${person.placeOfBirth}"></span></h4>
+                    <h4>Снятые фильмы: </h4>
+                    <ul class="film-list">
+                        <li th:each="film : ${person.directedFilms}">
+                            <a th:href="@{'/filmItem?id=' + ${film.id}}" th:text="${film.title}"></a>
+                        </li>
+                    </ul>
+                    <form th:action="@{/deletePerson}" th:object="${person}" method="post" class="changes_block">
+                        <a class="btn_change" th:href="@{'/updatePerson?id=' + ${person.id}}">
+                            <p>Изменить</p>
+                        </a>
+                        <input type="hidden" name="id" th:field="*{id}" th:value="${person.id}">
+                        <div class="delete_btn">
+                            <input type="button" class="btn_change" value="Удалить" onclick="showConfirmBlock()">
+                            <div class="delete_warn">
+                                <p>Вы точно хотите удалить это?</p>
+                                <input class="delete_warn_btn delete_btn_confirm" type="submit" value="Подтвердить">
+                                <input class="delete_warn_btn" type="button" value="Отменить" onclick="hideConfirmBlock()">
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <footer>
+    <div class="footer-line"></div>
+    <p class="copyright">Автор: Watnik </p>
+</footer>
+
+    <div th:replace="scripts :: scripts"></div>
+</body>
+<html>

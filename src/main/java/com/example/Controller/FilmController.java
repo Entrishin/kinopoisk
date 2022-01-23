@@ -22,7 +22,13 @@ public class FilmController {
 
     @GetMapping("/")
     private String getAllFilms(Model model){
+
+        //filmService.ClearFilms();
+
         List<Film> allFilms = filmService.getAllFilms();
+
+
+
         model.addAttribute("films",allFilms);
         return "index";
     }
@@ -32,15 +38,16 @@ public class FilmController {
         return "mainadd";
     }
 
-    @GetMapping("filmItem")
+    @GetMapping("/filmItem")
     private String getOneFilm(@RequestParam int id,Model model){
-        Film findFilm = filmService.getOneFilm(id).get();
+        Film findFilm = filmService.getOneFilm(id);
         model.addAttribute("film", findFilm);
-        Person findPerson = personService.getOnePerson(findFilm.getProducerId()).get();
+        Person findPerson = personService.getOnePerson(findFilm.getProducerId()); //тут где-то ошибка - страница выдаёт ошибку при попытке получить director
         model.addAttribute("director", findPerson);
         return "item";
     }
 
+    //сомнительный кусок он нужен вообще?
     @GetMapping("/findItem")
     private String getOneFilm(Model model){
         model.addAttribute("film2", new Film());
@@ -52,8 +59,9 @@ public class FilmController {
         model.addAttribute("film", findFilm);
         return "item";
     }
+    //конец сомнительного куска
 
-    @GetMapping("/addfilm")
+    @GetMapping("/addFilm")
     private String addFilm(Model model){
         List<Person> allPersons = personService.getAllPersons();
         model.addAttribute("persons", allPersons);
@@ -61,12 +69,37 @@ public class FilmController {
         return "addfilm";
     }
 
-    @PostMapping("addFilm")
+    @PostMapping("/addFilm")
     private String addFilm(@ModelAttribute Film film, @RequestParam("file") MultipartFile file, Model model) {
         FileController FC = new FileController();
         film.setImgUrl(FC.uploadFile(file,"filmIMG_" + film.getTitle()));
         Long filmId = filmService.addFilm(film);
         return "redirect:/"; //view после добавления фильма в БД
+    }
+
+    @GetMapping("/updateFilm")
+    public String updateFilmForm(@RequestParam long id,Model model){
+        Film film = filmService.getOneFilm(id);
+        List<Person> allPersons = personService.getAllPersons();
+        model.addAttribute("persons", allPersons);
+        model.addAttribute("film", film);
+        model.addAttribute("DirectorsName",personService.getOnePerson(film.getProducerId()).getFullName());
+        return "updateFilmForm";
+    }
+
+    @PostMapping("/updateFilm")
+    public String updateFilm(@ModelAttribute Film film, @RequestParam("file") MultipartFile file, Model model){
+        FileController FC = new FileController();
+        film.setImgUrl(FC.uploadFile(file,"filmIMG_" + film.getTitle()));
+        filmService.updateFilm(film);
+        return "redirect:/filmItem?id="+film.getId();  //переделать на personItem?Id=person.id
+    }
+
+    @PostMapping("/deleteFilm")
+    public String deletePerson(@ModelAttribute Film film, Model model){
+        model.addAttribute("film", film);
+        filmService.deleteFilm(film);
+        return "redirect:/index";
     }
 
 }

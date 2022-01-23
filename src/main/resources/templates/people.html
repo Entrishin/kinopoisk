@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
         <title>Кинопоиск</title>
-        <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
+        <!--<link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">-->
         <link rel="stylesheet" type="text/css" th:href="@{/css/people.css}">
 
         <link rel="stylesheet" href="https://i.icomoon.io/public/temp/4cb6920ffd/UntitledProject/style-svg.css">
@@ -19,7 +19,7 @@
                         <h3>Дата рождения</h3>
                         <h3>Страна рождения</h3>
                         <h3>Фильмы</h3>
-                        <div class="person-info" th:each="person : ${persons}">
+                        <div class="person-info" th:each="person : ${persons}" th:href="@{'/personItem?id=' + ${person.id}}" onclick="window.location.href = this.getAttribute('href')">
                             <h4 th:text="${person.fullName}"></h4>
                             <h4 th:text="${person.dateOfBirth}"></h4>
                             <h4 th:text="${person.placeOfBirth}">Страна рождения</h4>
