@@ -14,6 +14,7 @@ public class Person {
 
     private String dateOfBirth;
     private String placeOfBirth;
+    private String imgUrl;
 
     @Transient
     private List<Film> directedFilms;
@@ -64,5 +65,13 @@ public class Person {
 
     public List<Film> getDirectedFilms() {
         return directedFilms;
+    }
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
     }
 }

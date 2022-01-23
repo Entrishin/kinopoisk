@@ -15,12 +15,14 @@ public class Film {
     private int releaseYear;
     private String country;
     private Long producerId;
+    private String imgUrl;
 
     @ElementCollection(targetClass = Long.class, fetch = FetchType.EAGER)
     private Set<Long> actors;
     private int ageLimit;
     private double rating;
-    private String imgUrl;
+
+
 
     public String getImgUrl() {
         return imgUrl;

@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Кинопоиск</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
+    <!--<link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">-->
     <link rel="stylesheet" type="text/css" th:href="@{/css/item.css}">
 
     <link rel="stylesheet" href="https://i.icomoon.io/public/temp/4cb6920ffd/UntitledProject/style-svg.css">
@@ -21,7 +21,7 @@
 
                     <h3 class="item_title" th:text="${film.title}"></h3>
                     <h5>Жанр: <span th:text="${film.jenre}"></span></h5>
-                    <!--<h4>Режисёр: <span th:text="${director.getFullName()}"></span></h4>-->
+                    <h4>Режисёр: <span class="director" th:href="@{'/personItem?id=' + ${director.id}}" onclick="window.location.href = this.getAttribute('href')" th:text="${director.getFullName()}"  onerror = "this.onerror=null; this.text='Режиссёр неопределён'"></span></h4>
                     <h4>Краткое содержание: <span th:text="${film.description}"></span></h4>
                     <h5>Возрастное ограничение: <span th:text="${film.ageLimit}"></span></h5>
                     <h5>Страна, год выпуска: <span th:text="${film.country + ', ' + film.releaseYear}"></span></h5>

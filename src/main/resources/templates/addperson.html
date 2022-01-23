@@ -3,7 +3,7 @@
 <head>
     <title>Кинопоиск</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
+    <!--<link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">-->
     <link rel="stylesheet" type="text/css" th:href="@{/css/mainadd.css}">
 
     <link rel="stylesheet" href="https://i.icomoon.io/public/temp/4cb6920ffd/UntitledProject/style-svg.css">
@@ -15,7 +15,7 @@
         <div th:replace="top_menu :: top_menu"></div>
         <div class="cont">
             <h3>Введите даннные для добавления режисёра</h3>
-            <form th:action="@{/addPerson}" th:object="${person}" method="post" class="addform">
+            <form th:action="@{/addPerson}" th:object="${person}" method="post" class="addform"  enctype="multipart/form-data">
                 <fieldset>
                     <p>Имя</p>
                     <input type="text" th:field="*{fullName}" class="input-text">
@@ -27,6 +27,10 @@
                 <fieldset>
                     <p>Место рождения</p>
                     <input type="text" th:field="*{placeOfBirth}" class="input-text">
+                </fieldset>
+                <fieldset>
+                    <label for="file"><p>Файл с портретом</p></label>
+                    <input type="file" id="file" name="file" class="inputfile">
                 </fieldset>
                 <input type="submit" value="Добавить" class="submitbtn">
             </form>

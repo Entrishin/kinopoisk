@@ -3,7 +3,7 @@
 <head>
     <title>Кинопоиск</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
+    <!--<link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">-->
     <link rel="stylesheet" type="text/css" th:href="@{/css/mainadd.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/css/dropdownDirectors.css}">
 
@@ -24,9 +24,13 @@
                 <fieldset>
                     <p>Имя режисёра</p>
                     <select required id="director" th:field="*{producerId}" >
-                        <option value="hide">-- Выберите режисёра --</option>
-                        <option th:value="${person.id}" th:each="person : ${persons}">
-                            <p th:text="${person.fullName}"></p>
+                        <option th:value="${film.producerId}" th:text="${DirectorsName}"></option>
+                        <option
+                                th:each="person : ${persons}"
+                                th:value="${person.id}"
+                                th:text="${person.fullName}"
+                                th:if="${not person.id.equals(film.producerId)}">
+
                         </option>
                     </select>
                 </fieldset>
@@ -56,6 +60,7 @@
                     <label for="file"><p>Файл для картинки на превью</p></label>
                     <input type="file" id="file" name="file" class="inputfile">
                 </fieldset>
+                <input type="hidden" name="id" th:field="*{id}" th:value="${film.id}">
                 <input type="submit" value="Добавить" class="submitbtn">
             </form>
         </div>

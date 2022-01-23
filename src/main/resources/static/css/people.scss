@@ -1,6 +1,4 @@
-@mixin transTime{
-  transition-duration: 0.5s;
-}
+@import "main.scss";
 
 .people-list{
   width: 100%;
@@ -42,14 +40,5 @@
 
   &:hover {
     box-shadow: 0 0 15px rgb(254 233 112);
-    background-color: #dbd7d4;
-
-    h4.people-list {
-      color: #2c3258;
-    }
-
-    a.person-info-films-block {
-      color: #2c3258;
-    }
   }
 }

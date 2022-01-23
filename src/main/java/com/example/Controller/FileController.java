@@ -41,15 +41,10 @@ public class FileController {
 
         // save the file on the local file system
         try {
-            //Path path = Paths.get(UPLOAD_DIR + fileName);
-            //Path path = Paths.get(request.getServletContext().getRealPath("/img/") + fileName);
-            //Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
-
             File fl = new File(UPLOAD_DIR + fileName);
             try (OutputStream os = new FileOutputStream(fl)) {
                 os.write(file.getBytes());
             }
-
         } catch (IOException e) {
             e.printStackTrace();
         }

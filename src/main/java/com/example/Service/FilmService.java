@@ -1,5 +1,6 @@
 package com.example.Service;
 
+import com.example.Controller.FileController;
 import com.example.Domain.Film;
 import com.example.Domain.Person;
 import com.example.Repos.FilmRepo;
@@ -16,6 +17,8 @@ import java.util.stream.Collectors;
 public class FilmService {
     @Autowired
     private FilmRepo filmRepo;
+    @Autowired
+    private PersonService personService;
 
     public List<Film> getAllFilms() {
         List <Film> result = filmRepo.findAll();
@@ -64,5 +67,22 @@ public class FilmService {
 
     public void deleteFilm(Film film){
         filmRepo.delete(filmRepo.getOne(film.getId()));
+    }
+
+
+    public int ClearFilms(){
+        {
+            int result = 0;
+            List<Film> allFilms = this.getAllFilms();
+            List<Person> allPersons = personService.getAllPersons();
+            for (Film f: allFilms
+            ) {
+                if(!allPersons.contains(personService.getOnePerson(f.getProducerId()))) {
+                    this.deleteFilm(f);
+                    result++;
+                }
+            }
+            return result;
+        }
     }
 }

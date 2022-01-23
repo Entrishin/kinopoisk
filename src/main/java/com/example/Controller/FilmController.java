@@ -22,7 +22,13 @@ public class FilmController {
 
     @GetMapping("/")
     private String getAllFilms(Model model){
+
+        //filmService.ClearFilms();
+
         List<Film> allFilms = filmService.getAllFilms();
+
+
+
         model.addAttribute("films",allFilms);
         return "index";
     }
@@ -72,17 +78,17 @@ public class FilmController {
     }
 
     @GetMapping("/updateFilm")
-    public String updateFilmForm(@RequestParam int id,Model model){
+    public String updateFilmForm(@RequestParam long id,Model model){
         Film film = filmService.getOneFilm(id);
         List<Person> allPersons = personService.getAllPersons();
         model.addAttribute("persons", allPersons);
         model.addAttribute("film", film);
+        model.addAttribute("DirectorsName",personService.getOnePerson(film.getProducerId()).getFullName());
         return "updateFilmForm";
     }
 
     @PostMapping("/updateFilm")
     public String updateFilm(@ModelAttribute Film film, @RequestParam("file") MultipartFile file, Model model){
-        model.addAttribute("film", film);
         FileController FC = new FileController();
         film.setImgUrl(FC.uploadFile(file,"filmIMG_" + film.getTitle()));
         filmService.updateFilm(film);

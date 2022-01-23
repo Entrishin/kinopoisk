@@ -1,3 +1,5 @@
+@import "main.scss";
+
 .item_block{
     display: grid;
     grid-template-columns: 2fr 4fr;
@@ -17,9 +19,7 @@
     }
 }
 $margin_b: 20px;
-@mixin transTime{
-    transition-duration: 0.5s;
-}
+
 .info_block{
     padding-left: 50px;
     h4{
@@ -83,7 +83,7 @@ h3.item_title{
     left: 285px;
     //left: -70px;
     top: -50px;
-    background-color: #fee970;
+    background-color: $lightY;
     height: 150px;
     width: fit-content;
     padding-left: 15px;
@@ -103,7 +103,7 @@ h3.item_title{
         color: #2c3258;
     }
     .delete_btn_confirm{
-        background-color: #dbd7d4 !important;
+        background-color:$lightB !important;
     }
     .delete_warn_btn{
         height: 3em;
@@ -111,12 +111,12 @@ h3.item_title{
         padding: 0.6em;
         font-size: 1em;
         font-weight: 600;
-        background-color: #e4b61a;
+        background-color: $yellow;
         &:hover{
             box-shadow: 0 0 5px rgb(17%, 20%, 35%, 0.6);
         }
         &:active{
-            background-color: #2c3258;
+            background-color: $blue;
             color: bisque;
         }
     }
@@ -158,5 +158,12 @@ ul.film-list{
                 font-weight: 600;
             }
         }
+    }
+}
+
+span.director{
+    @include transTime;
+    &:hover{
+        color: $lightY;
     }
 }

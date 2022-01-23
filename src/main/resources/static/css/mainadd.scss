@@ -1,13 +1,5 @@
-$blue: #2c3258;
-$yellow: #e4b61a;
-$lightY: #fee970;
-$lightB:#dbd7d4;
-$grey: #9b9183;
-$select-width: 400px;
+@import "main.scss";
 
-@mixin transTime{
-  transition-duration: 0.5s;
-}
 .addmenu{
   display: grid;
   grid-template-columns: 1fr 1fr;

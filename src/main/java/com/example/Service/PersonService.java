@@ -1,5 +1,7 @@
 package com.example.Service;
 
+import com.example.Controller.FileController;
+import com.example.Domain.Film;
 import com.example.Domain.Person;
 import com.example.Repos.PersonRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,8 @@ import java.util.*;
 public class PersonService {
     @Autowired
     private PersonRepo personRepo;
+    @Autowired
+    private FilmService filmService;
 
     public Long addPerson(String fullName,String dateOfBirth, String placeOfBirth) {
         Person person = new Person(fullName,dateOfBirth,placeOfBirth);
@@ -40,10 +44,16 @@ public class PersonService {
         DBPer.setFullName(person.getFullName());
         DBPer.setDateOfBirth(person.getDateOfBirth());
         DBPer.setPlaceOfBirth(person.getPlaceOfBirth());
+        DBPer.setImgUrl(person.getImgUrl());
         personRepo.save(DBPer);
     }
 
     public void deletePerson(Person person){
+        List<Film> films = filmService.getFilmsByDirector(person.getId());
+        for (Film f: films
+             ) {
+            filmService.deleteFilm(f);
+        }
         personRepo.delete(personRepo.getOne(person.getId()));
     }
 
