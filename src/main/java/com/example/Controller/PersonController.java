@@ -64,8 +64,10 @@ public class PersonController {
     @PostMapping("/updatePerson")
     public String updatePerson(@ModelAttribute Person person, @RequestParam("file") MultipartFile file, Model model){
         //добавить логику
-        FileController FC = new FileController();
-        person.setImgUrl(FC.uploadFile(file, "personIMG_" + person.getFullName() + person.getId()));
+        if (file.isEmpty()) {
+            FileController FC = new FileController();
+            person.setImgUrl(FC.uploadFile(file, "personIMG_" + person.getFullName() + person.getId()));
+        }
         personService.updatePerson(person);
         return "redirect:/personItem?id="+person.getId();  //переделать на personItem?Id=person.id
     }

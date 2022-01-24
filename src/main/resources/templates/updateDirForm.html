@@ -18,15 +18,15 @@
             <form th:action="@{/updatePerson}" th:object="${person}" method="post" class="addform"  enctype="multipart/form-data">
                 <fieldset>
                     <p>Имя</p>
-                    <input type="text" th:field="*{fullName}" class="input-text" th:placeholder="${person.fullName}">
+                    <input type="text" th:field="*{fullName}" maxlength="255" class="input-text" th:placeholder="${person.fullName}">
                 </fieldset>
                 <fieldset>
                     <p>Дата рождения</p>
-                    <input type="text" th:field="*{dateOfBirth}" class="input-text" th:placeholder="${person.dateOfBirth}">
+                    <input type="text" th:field="*{dateOfBirth}" maxlength="255" class="input-text" th:placeholder="${person.dateOfBirth}">
                 </fieldset>
                 <fieldset>
                     <p>Место рождения</p>
-                    <input type="text" th:field="*{placeOfBirth}" class="input-text" th:placeholder="${person.placeOfBirth}">
+                    <input type="text" th:field="*{placeOfBirth}" maxlength="255" class="input-text" th:placeholder="${person.placeOfBirth}">
                 </fieldset>
                 <fieldset>
                     <label for="file"><p>Файл с портретом</p></label>

@@ -62,7 +62,8 @@ public class FilmService {
         DBFilm.setReleaseYear(film.getReleaseYear());
         DBFilm.setJenre(film.getJenre());
         DBFilm.setProducerId(film.getProducerId());
-        DBFilm.setImgUrl(film.getImgUrl());
+        if(film.getImgUrl()!= null)
+            DBFilm.setImgUrl(film.getImgUrl());
         filmRepo.save(DBFilm);
     }
 

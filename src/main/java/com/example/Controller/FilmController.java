@@ -89,8 +89,10 @@ public class FilmController {
 
     @PostMapping("/updateFilm")
     public String updateFilm(@ModelAttribute Film film, @RequestParam("file") MultipartFile file, Model model){
-        FileController FC = new FileController();
-        film.setImgUrl(FC.uploadFile(file,"filmIMG_" + film.getTitle()));
+        if (!file.isEmpty()) {
+            FileController FC = new FileController();
+            film.setImgUrl(FC.uploadFile(file,"filmIMG_" + film.getTitle()));
+        }
         filmService.updateFilm(film);
         return "redirect:/filmItem?id="+film.getId();
     }
