@@ -54,15 +54,16 @@ public class FilmService {
     }
 
     public void updateFilm(Film film){
-        Film DBPer = filmRepo.getOne(film.getId());
-        DBPer.setImgUrl(film.getTitle());
-        DBPer.setAgeLimit(film.getAgeLimit());
-        DBPer.setCountry(film.getCountry());
-        DBPer.setDescription(film.getDescription());
-        DBPer.setReleaseYear(film.getReleaseYear());
-        DBPer.setJenre(film.getJenre());
-        DBPer.setProducerId(film.getProducerId());
-        filmRepo.save(DBPer);
+        Film DBFilm = filmRepo.getOne(film.getId());
+        DBFilm.setTitle(film.getTitle());
+        DBFilm.setAgeLimit(film.getAgeLimit());
+        DBFilm.setCountry(film.getCountry());
+        DBFilm.setDescription(film.getDescription());
+        DBFilm.setReleaseYear(film.getReleaseYear());
+        DBFilm.setJenre(film.getJenre());
+        DBFilm.setProducerId(film.getProducerId());
+        DBFilm.setImgUrl(film.getImgUrl());
+        filmRepo.save(DBFilm);
     }
 
     public void deleteFilm(Film film){

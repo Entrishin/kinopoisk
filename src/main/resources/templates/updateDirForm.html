@@ -14,7 +14,7 @@
     <div class="container">
         <div th:replace="top_menu :: top_menu"></div>
         <div class="cont">
-            <h3>Введите даннные для добавления режисёра</h3>
+            <h3>Введите даннные для изменения режисёра</h3>
             <form th:action="@{/updatePerson}" th:object="${person}" method="post" class="addform"  enctype="multipart/form-data">
                 <fieldset>
                     <p>Имя</p>
