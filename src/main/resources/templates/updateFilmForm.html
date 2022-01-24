@@ -15,7 +15,7 @@
     <div class="container">
         <div th:replace="top_menu :: top_menu"></div>
         <div class="cont">
-            <h3>Введите даннные для добавления фильма</h3>
+            <h3>Введите даннные для изменения фильма</h3>
             <form th:action="@{/updateFilm}" th:object="${film}" method="post" class="addform" enctype="multipart/form-data">
                 <fieldset>
                     <p>Название фильма</p>
@@ -61,7 +61,7 @@
                     <input type="file" id="file" name="file" class="inputfile">
                 </fieldset>
                 <input type="hidden" name="id" th:field="*{id}" th:value="${film.id}">
-                <input type="submit" value="Добавить" class="submitbtn">
+                <input type="submit" value="Сохранить" class="submitbtn">
             </form>
         </div>
     </div>

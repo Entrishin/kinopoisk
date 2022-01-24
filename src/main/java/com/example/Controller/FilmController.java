@@ -92,14 +92,14 @@ public class FilmController {
         FileController FC = new FileController();
         film.setImgUrl(FC.uploadFile(file,"filmIMG_" + film.getTitle()));
         filmService.updateFilm(film);
-        return "redirect:/filmItem?id="+film.getId();  //переделать на personItem?Id=person.id
+        return "redirect:/filmItem?id="+film.getId();
     }
 
     @PostMapping("/deleteFilm")
     public String deletePerson(@ModelAttribute Film film, Model model){
         model.addAttribute("film", film);
         filmService.deleteFilm(film);
-        return "redirect:/index";
+        return "redirect:/";
     }
 
 }
