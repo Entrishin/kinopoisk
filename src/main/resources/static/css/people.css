@@ -221,7 +221,7 @@ p.copyright {
 .people-list {
   width: 100%;
   display: grid;
-  grid-template-columns: 3fr 3fr 3fr 4fr;
+  grid-template-columns: 3fr 3fr 3fr 3fr 4fr;
   align-items: center;
   justify-items: center;
   column-gap: 10px;
@@ -243,7 +243,7 @@ p.copyright {
 
 .person-info {
   grid-column-start: 1;
-  grid-column-end: 5;
+  grid-column-end: 6;
   display: grid;
   grid-template-columns: inherit;
   width: inherit;
@@ -259,6 +259,21 @@ p.copyright {
 }
 .person-info:hover {
   box-shadow: 0 0 15px #fee970;
+}
+
+.person-info-img {
+  width: 220px;
+  height: 127px;
+  margin: 15px;
+  border-radius: 15px;
+}
+.person-info-img img {
+  border-radius: inherit;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  overflow: hidden;
 }
 
 /*# sourceMappingURL=people.css.map */
