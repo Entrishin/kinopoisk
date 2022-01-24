@@ -19,7 +19,7 @@
             <form th:action="@{/updateFilm}" th:object="${film}" method="post" class="addform" enctype="multipart/form-data">
                 <fieldset>
                     <p>Название фильма</p>
-                    <input type="text" th:field="*{title}" required name="title" class="input-text">
+                    <input type="text" maxlength="255" th:field="*{title}" required name="title" class="input-text">
                 </fieldset>
                 <fieldset>
                     <p>Имя режисёра</p>
@@ -36,7 +36,7 @@
                 </fieldset>
                 <fieldset>
                     <p>Жанр</p>
-                    <input type="text" th:field="*{jenre}" name="jenre" class="input-text">
+                    <input type="text" maxlength="255" th:field="*{jenre}" name="jenre" class="input-text">
                 </fieldset>
                 <fieldset>
                     <p>Год выпуска</p>
@@ -44,7 +44,7 @@
                 </fieldset>
                 <fieldset>
                     <p>Страна</p>
-                    <input type="text" name="country" th:field="*{country}" class="input-text">
+                    <input type="text" name="country" maxlength="255" th:field="*{country}" class="input-text">
                 </fieldset>
                 <fieldset>
                     <p>Возрастные ограничения</p>
@@ -54,7 +54,7 @@
                     <p>Описание</p>
                 </fieldset>
                 <fieldset style="justify-content: center">
-                    <textarea rows="8" cols="50" th:field="*{description}" name="description" class="textareaMy"></textarea>
+                    <textarea rows="6" cols="50" maxlength="255" th:field="*{description}" name="description" class="textareaMy"></textarea>
                 </fieldset>
                 <fieldset>
                     <label for="file"><p>Файл для картинки на превью</p></label>

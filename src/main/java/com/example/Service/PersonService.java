@@ -44,7 +44,8 @@ public class PersonService {
         DBPer.setFullName(person.getFullName());
         DBPer.setDateOfBirth(person.getDateOfBirth());
         DBPer.setPlaceOfBirth(person.getPlaceOfBirth());
-        DBPer.setImgUrl(person.getImgUrl());
+        if(person.getImgUrl()!= null)
+            DBPer.setImgUrl(person.getImgUrl());
         personRepo.save(DBPer);
     }
 
