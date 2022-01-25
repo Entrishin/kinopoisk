@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import static java.lang.System.in;
@@ -66,7 +67,7 @@ public class PersonController {
         //добавить логику
         if (!file.isEmpty()) {
             FileController FC = new FileController();
-            person.setImgUrl(FC.uploadFile(file, "personIMG_" + person.getFullName() + person.getId()));
+            person.setImgUrl(FC.uploadFile(file, "personIMG_" + person.getFullName() + person.getId() + Calendar.getInstance().getTimeInMillis()));
         }
         personService.updatePerson(person);
         return "redirect:/personItem?id="+person.getId();  //переделать на personItem?Id=person.id
