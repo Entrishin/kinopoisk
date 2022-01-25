@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.Calendar;
 import java.util.List;
 import java.util.Set;
 
@@ -91,7 +92,7 @@ public class FilmController {
     public String updateFilm(@ModelAttribute Film film, @RequestParam("file") MultipartFile file, Model model){
         if (!file.isEmpty()) {
             FileController FC = new FileController();
-            film.setImgUrl(FC.uploadFile(file,"filmIMG_" + film.getTitle()));
+            film.setImgUrl(FC.uploadFile(file, "filmIMG_" + film.getTitle() + Calendar.getInstance().getTimeInMillis()));
         }
         filmService.updateFilm(film);
         return "redirect:/filmItem?id="+film.getId();

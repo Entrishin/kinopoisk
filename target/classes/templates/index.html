@@ -25,7 +25,7 @@
                                     <img th:src="${'/UploadedImages/' + film.imgUrl}"  onerror = "this.onerror=null; this.src='/img/smurfiki.jpg'" alt="noimg">
                                 </div>
                                 <h4 th:text="${film.title}"></h4>
-                                <p class="item-desc" th:text="${film.releaseYear +', '+ film.jenre + ' ' + film.id}"></p>
+                                <p class="item-desc" th:text="${film.releaseYear +', '+ film.jenre}"></p>
                             </a>
                         </div>
 
