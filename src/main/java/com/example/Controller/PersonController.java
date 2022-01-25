@@ -64,7 +64,7 @@ public class PersonController {
     @PostMapping("/updatePerson")
     public String updatePerson(@ModelAttribute Person person, @RequestParam("file") MultipartFile file, Model model){
         //добавить логику
-        if (file.isEmpty()) {
+        if (!file.isEmpty()) {
             FileController FC = new FileController();
             person.setImgUrl(FC.uploadFile(file, "personIMG_" + person.getFullName() + person.getId()));
         }
