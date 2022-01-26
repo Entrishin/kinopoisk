@@ -23,13 +23,7 @@ public class FilmController {
 
     @GetMapping("/")
     private String getAllFilms(Model model){
-
-        //filmService.ClearFilms();
-
         List<Film> allFilms = filmService.getAllFilms();
-
-
-
         model.addAttribute("films",allFilms);
         return "index";
     }
@@ -43,7 +37,7 @@ public class FilmController {
     private String getOneFilm(@RequestParam int id,Model model){
         Film findFilm = filmService.getOneFilm(id);
         model.addAttribute("film", findFilm);
-        Person findPerson = personService.getOnePerson(findFilm.getProducerId()); //тут где-то ошибка - страница выдаёт ошибку при попытке получить director
+        Person findPerson = personService.getOnePerson(findFilm.getProducerId());
         model.addAttribute("director", findPerson);
         return "item";
     }
@@ -71,7 +65,7 @@ public class FilmController {
     }
 
     @PostMapping("/addFilm")
-    private String addFilm(@ModelAttribute Film film, @RequestParam("file") MultipartFile file, Model model) {
+    private String addFilm(@ModelAttribute Film film, @RequestParam("file") MultipartFile file) {
         FileController FC = new FileController();
         film.setImgUrl(FC.uploadFile(file,"filmIMG_" + film.getTitle()));
         Long filmId = filmService.addFilm(film);
@@ -89,7 +83,7 @@ public class FilmController {
     }
 
     @PostMapping("/updateFilm")
-    public String updateFilm(@ModelAttribute Film film, @RequestParam("file") MultipartFile file, Model model){
+    public String updateFilm(@ModelAttribute Film film, @RequestParam("file") MultipartFile file){
         if (!file.isEmpty()) {
             FileController FC = new FileController();
             film.setImgUrl(FC.uploadFile(file, "filmIMG_" + film.getTitle() + Calendar.getInstance().getTimeInMillis()));
@@ -99,8 +93,7 @@ public class FilmController {
     }
 
     @PostMapping("/deleteFilm")
-    public String deletePerson(@ModelAttribute Film film, Model model){
-        model.addAttribute("film", film);
+    public String deletePerson(@ModelAttribute Film film){
         filmService.deleteFilm(film);
         return "redirect:/";
     }

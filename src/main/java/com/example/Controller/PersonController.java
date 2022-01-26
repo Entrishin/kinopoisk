@@ -29,7 +29,7 @@ public class PersonController {
         return "addperson";
     }
     @PostMapping("/addPerson")
-    public String addPerson(@ModelAttribute Person person, @RequestParam("file") MultipartFile file, Model model) {
+    public String addPerson(@ModelAttribute Person person, @RequestParam("file") MultipartFile file) {
         FileController FC = new FileController();
         personService.addPerson(person);
         person.setImgUrl(FC.uploadFile(file, "personIMG_" + person.getFullName() + person.getId()));
@@ -63,7 +63,7 @@ public class PersonController {
     }
 
     @PostMapping("/updatePerson")
-    public String updatePerson(@ModelAttribute Person person, @RequestParam("file") MultipartFile file, Model model){
+    public String updatePerson(@ModelAttribute Person person, @RequestParam("file") MultipartFile file){
         //добавить логику
         if (!file.isEmpty()) {
             FileController FC = new FileController();
@@ -74,8 +74,7 @@ public class PersonController {
     }
 
     @PostMapping("/deletePerson")
-    public String deletePerson(@ModelAttribute Person person, Model model){
-        model.addAttribute("person", person);
+    public String deletePerson(@ModelAttribute Person person){
         personService.deletePerson(person);
         return "redirect:/persons";
     }

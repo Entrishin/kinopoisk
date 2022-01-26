@@ -43,8 +43,8 @@ public class FilmService {
         return result;
     }
 
-    public Long addFilm(String title, String jenre, String description, int releaseYear, String country, Long producerId, Set<Long> actorsId, int ageLimit, String imgUrl) {
-        Film film = new Film(title,jenre,description,releaseYear,country,producerId,actorsId,ageLimit,imgUrl);
+    public Long addFilm(String title, String jenre, String description, int releaseYear, String country, Long producerId, int ageLimit, String imgUrl) {
+        Film film = new Film(title,jenre,description,releaseYear,country,producerId,ageLimit,imgUrl);
         filmRepo.save(film);
         return film.getId();
     }
