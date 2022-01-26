@@ -16,9 +16,6 @@ public class Film {
     private String country;
     private Long producerId;
     private String imgUrl;
-
-    @ElementCollection(targetClass = Long.class, fetch = FetchType.EAGER)
-    private Set<Long> actors;
     private int ageLimit;
     private double rating;
 
@@ -34,14 +31,13 @@ public class Film {
 
     public Film(){}
 
-    public Film(String title, String jenre, String description, int releaseYear, String country, Long producerId, Set<Long> actors, int ageLimit, String imgUrl) {
+    public Film(String title, String jenre, String description, int releaseYear, String country, Long producerId, int ageLimit, String imgUrl) {
         this.title = title;
         this.jenre = jenre;
         this.description = description;
         this.releaseYear = releaseYear;
         this.country = country;
         this.producerId = producerId;
-        this.actors = actors;
         this.ageLimit = ageLimit;
         this.imgUrl = imgUrl;
     }
@@ -94,13 +90,6 @@ public class Film {
         this.producerId = producerId;
     }
 
-    public Set<Long> getActors() {
-        return actors;
-    }
-
-    public void setActors(Set<Long> actors) {
-        this.actors = actors;
-    }
 
     public int getAgeLimit() {
         return ageLimit;

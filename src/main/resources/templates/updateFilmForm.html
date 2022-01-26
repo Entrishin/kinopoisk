@@ -18,7 +18,7 @@
             <h3>Введите даннные для изменения фильма</h3>
             <form th:action="@{/updateFilm}" th:object="${film}" method="post" class="addform" enctype="multipart/form-data">
                 <fieldset>
-                    <p>Название фильма</p>
+                   <p>Название фильма</p>
                     <input type="text" maxlength="255" th:field="*{title}" required name="title" class="input-text">
                 </fieldset>
                 <fieldset>
