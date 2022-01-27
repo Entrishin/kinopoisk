@@ -376,10 +376,11 @@ ul.film-list li a:hover {
   font-weight: 600;
 }
 
-span.director {
+a.director {
   transition-duration: 0.5s;
+  color: bisque;
 }
-span.director:hover {
+a.director:hover {
   color: #fee970;
 }
 
