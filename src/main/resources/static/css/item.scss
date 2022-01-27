@@ -161,7 +161,7 @@ ul.film-list{
     }
 }
 
-span.director{
+a.director{
     @include transTime;
     &:hover{
         color: $lightY;

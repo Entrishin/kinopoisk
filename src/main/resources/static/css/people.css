@@ -230,6 +230,9 @@ p.copyright {
 .people-list h4 {
   color: bisque;
 }
+.people-list a {
+  color: bisque;
+}
 .people-list .person-info-films-block {
   padding-top: 0.5em;
   padding-bottom: 0.5em;
